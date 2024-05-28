@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {config} from "../../config/config";
 
 function VerAcudiente() {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ function VerAcudiente() {
 
   const fetchFamilia = async () => {
     try {
-      const response = await fetch("http://localhost:3000/estudianteacudiente");
+      const response = await fetch(`${config.baseUrl}/estudianteacudiente`);
       const data = await response.json();
       setFamilia(data.data);
     } catch (error) {

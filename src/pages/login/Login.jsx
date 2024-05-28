@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import {CircularProgress} from "@mui/material";
+import {config} from "../../config/config";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function Login() {
   const fetchData = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    fetch(" http://localhost:3000/login", {
+    fetch(`${config.baseUrl}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +109,11 @@ export default function Login() {
                 onClick={fetchData}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                {isLoading ? <CircularProgress size={30} color="inherit" /> : "Iniciar Sesión"}
+                {isLoading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  "Iniciar Sesión"
+                )}
               </button>
             </div>
           </form>

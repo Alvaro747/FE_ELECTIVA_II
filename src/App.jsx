@@ -20,6 +20,8 @@ import VerRolModulo from "./pages/rol-modulo/VerRolModulo";
 import CrearEstudiante from "./pages/estudiantes/CrearEstudiante";
 import VerAcudiente from "./pages/acudiente/VerAcudiente";
 import CrearAcudiente from "./pages/acudiente/CrearAcudiente";
+import CrearMatricula from "./pages/matricula-user/CrearMatricula";
+import VerMatricula from "./pages/matricula-user/MatriculaUser";
 
 function App() {
   return (
@@ -32,7 +34,8 @@ function App() {
         <Route element={<AuthLayout />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<Welcome />} />
-            <Route path="matricular-estudiantes" element={<MatriculaUser />} />
+            <Route path="matricular-estudiantes" element={<CrearMatricula />} />
+            <Route path="matriculas" element={<VerMatricula />} />
             <Route path="crear-cursos" element={<CrearCurso />} />
             <Route path="ver-cursos" element={<VerCursos />} />
             <Route path="usuarios-roles" element={<VerUsuarioRol />} />

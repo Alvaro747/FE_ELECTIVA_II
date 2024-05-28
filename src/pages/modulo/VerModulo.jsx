@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {config} from "../../config/config";
 
 function VerModulo() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function VerModulo() {
 
   const fetchModulos = async () => {
     try {
-      const response = await fetch("http://localhost:3000/modulo");
+      const response = await fetch(`${config.baseUrl}/modulo`);
       const data = await response.json();
 
       setModulos(data.data);

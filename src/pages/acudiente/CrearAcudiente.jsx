@@ -1,6 +1,7 @@
 import {CircularProgress, MenuItem, Select} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {config} from "../../config/config";
 
 function CrearAcudiente() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function CrearAcudiente() {
     const acudiente = {nombres, telefono, celular, ocupacion, parentesco};
 
     try {
-      const response = await fetch("http://localhost:3000/acudiente", {
+      const response = await fetch(`${config.baseUrl}/acudiente`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,16 +45,13 @@ function CrearAcudiente() {
     };
 
     try {
-      const response = await fetch(
-        "http://localhost:3000/estudianteacudiente",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(relacion),
-        }
-      );
+      const response = await fetch(`${config.baseUrl}/estudianteacudiente`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(relacion),
+      });
 
       const data = await response.json();
     } catch (error) {
@@ -65,7 +63,7 @@ function CrearAcudiente() {
 
   const fetchEstudiante = async () => {
     try {
-      const response = await fetch("http://localhost:3000/estudiante");
+      const response = await fetch(`${config.baseUrl}/estudiante`);
       const data = await response.json();
       setListEstudiante(data.data);
     } catch (error) {

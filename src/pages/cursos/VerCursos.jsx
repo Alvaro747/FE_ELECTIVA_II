@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {config} from "../../config/config";
 
 function VerCursos() {
   const [cursos, setCursos] = useState([]);
 
   const fetchCursos = async () => {
     try {
-      const response = await fetch("http://localhost:3000/curso");
+      const response = await fetch(`${config.baseUrl}/curso`);
       const data = await response.json();
       setCursos(data.data);
     } catch (error) {

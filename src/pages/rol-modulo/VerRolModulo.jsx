@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import {config} from "../../config/config";
 
 function VerRolModulo() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function VerRolModulo() {
   const fetchModulos = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/modulorol/rol/${user?.rol?.id}`
+        `${config.baseUrl}/modulorol/rol/${user?.rol?.id}`
       );
       const data = await response.json();
       const getModulos = data.data.map((item) => item.modulo);

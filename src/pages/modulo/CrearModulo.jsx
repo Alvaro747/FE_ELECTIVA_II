@@ -1,6 +1,7 @@
 import {CircularProgress} from "@mui/material";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {config} from "../../config/config";
 
 function CrearModulo() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function CrearModulo() {
     setIsLoading(true);
     const modulo = {name, description, rute};
 
-    fetch("http://localhost:3000/modulo", {
+    fetch(`${config.baseUrl}/modulo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

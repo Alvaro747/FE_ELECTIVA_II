@@ -2,6 +2,7 @@ import {CircularProgress, MenuItem, Select} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import {config} from "../../config/config";
 
 function CrearRolModulo() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function CrearRolModulo() {
 
   const fetchModulo = async () => {
     try {
-      const response = await fetch("http://localhost:3000/modulo");
+      const response = await fetch(`${config.baseUrl}/modulo`);
       const data = await response.json();
       setListModulo(data.data);
     } catch (error) {
@@ -30,7 +31,7 @@ function CrearRolModulo() {
 
   const fetchRol = async () => {
     try {
-      const response = await fetch("http://localhost:3000/rol");
+      const response = await fetch(`${config.baseUrl}/rol`);
       const data = await response.json();
       setListRol(data.data);
     } catch (error) {
@@ -44,7 +45,7 @@ function CrearRolModulo() {
     try {
       const rolModulo = {rol: {id: rol}, modulo: {id: modulo}};
 
-      const response = await fetch("http://localhost:3000/rolmodulo", {
+      const response = await fetch(`${config.baseUrl}/rolmodulo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,9 +63,7 @@ function CrearRolModulo() {
 
   const handleUpdateModulos = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/modulorol/rol/${rol}`
-      );
+      const response = await fetch(`${config.baseUrl}/modulorol/rol/${rol}`);
       const data = await response.json();
       const getModulos = data.data.map((item) => item.modulo);
       user.modulos = getModulos;

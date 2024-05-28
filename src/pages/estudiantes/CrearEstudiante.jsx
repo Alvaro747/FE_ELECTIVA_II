@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {CircularProgress} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import {config} from "../../config/config";
 
 const fieldData = [
   {name: "nombres", type: "text", placeholder: "Nombres"},
@@ -71,7 +72,7 @@ function CrearEstudiante() {
     setIsLoading(true);
     const estudiante = formData;
     try {
-      fetch("http://localhost:3000/estudiante", {
+      fetch(`${config.baseUrl}/estudiante`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

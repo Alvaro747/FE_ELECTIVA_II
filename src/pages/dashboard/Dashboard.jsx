@@ -28,7 +28,7 @@ const Dashboard = () => {
     <div className="flex overflow-hidden bg-white rounded-lg">
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
-          <div className="flex flex-col flex-grow pt-5 overflow-y-auto border-r bg-neutral-800">
+          <div className="flex flex-col flex-grow pt-5 overflow-y-auto border-r bg-neutral-800 pb-10">
             <div className="flex flex-col items-center flex-shrink-0 px-4">
               <a
                 className="px-8 text-left focus:outline-none"
@@ -79,24 +79,6 @@ const Dashboard = () => {
                   })}
                 </ul>
               </nav>
-            </div>
-            <div className="flex flex-shrink-0 p-4 px-4 bg-neutral-900">
-              <a href="#" className="flex-shrink-0 block w-full group">
-                <div className="flex items-center">
-                  <div>
-                    <img
-                      className="inline-block rounded-full h-9 w-9"
-                      src="/assets/images/avatar.png"
-                      alt=""
-                    />
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-neutral-200">
-                      Wicked Labs
-                    </p>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
         </div>

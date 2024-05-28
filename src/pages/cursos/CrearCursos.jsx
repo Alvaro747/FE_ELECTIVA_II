@@ -1,6 +1,7 @@
 import {CircularProgress, MenuItem, Select} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {config} from "../../config/config";
 
 function CrearCursos() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function CrearCursos() {
 
   const fetchSede = async () => {
     try {
-      const response = await fetch("http://localhost:3000/sede");
+      const response = await fetch(`${config.baseUrl}/sede`);
       const data = await response.json();
       setListSede(data.data);
     } catch (error) {
@@ -42,7 +43,7 @@ function CrearCursos() {
     setIsLoading(true);
     try {
       cursoData.sede = {id: cursoData.sede};
-      const response = await fetch("http://localhost:3000/curso", {
+      const response = await fetch(`${config.baseUrl}/curso`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

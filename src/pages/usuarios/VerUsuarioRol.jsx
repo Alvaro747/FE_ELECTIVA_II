@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {config} from "../../config/config";
 
 function VerPersonas() {
   const [personas, setPersonas] = useState([]);
 
   const fetchPersonas = async () => {
     try {
-      const response = await fetch("http://localhost:3000/userrol");
+      const response = await fetch(`${config.baseUrl}/userrol`);
       const data = await response.json();
       setPersonas(data.data);
     } catch (error) {
